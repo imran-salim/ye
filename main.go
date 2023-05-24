@@ -35,7 +35,7 @@ func quoteKanyeWest(censor bool) string {
 
 	quote := responseObject.Quote
 
-	if censor == true {
+	if censor {
 		return goaway.Censor(quote)
 	}
 
