@@ -1,5 +1,5 @@
 # Ye Quote
-This repository generates Kanye West quotes in the command-line interface (CLI).
+This repository writes Kanye West quotes in the command-line interface (CLI).
 
 ---
 ### Installation
