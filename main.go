@@ -30,10 +30,10 @@ func quoteKanyeWest(censor bool) string {
 		log.Fatal(err)
 	}
 
-	var responseObject Response
-	json.Unmarshal(data, &responseObject)
+	var resObj Response
+	json.Unmarshal(data, &resObj)
 
-	quote := responseObject.Quote
+	quote := resObj.Quote
 
 	if censor {
 		return goaway.Censor(quote)
