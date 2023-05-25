@@ -3,17 +3,13 @@ This repository writes Kanye West quotes in the command-line interface (CLI).
 
 ---
 ### Installation
-Run the following command:
+Run the following command to install this application:
 ```
 make
 ```
 
 ### Usage
-Run either of the two following commands to use this application:
+Run the following command to use this application:
 ```
 ./ye
-```
-or
-```
-go run main.go
 ```
