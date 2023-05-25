@@ -3,8 +3,8 @@ all: get build
 
 get:
 	@echo "Installing packages and dependencies"
-	go get ye-quote
+	go get ye
 
 build:
-	@echo "Building ye-quote"
+	@echo "Building Ye"
 	go build

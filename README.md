@@ -1,4 +1,4 @@
-# Ye Quote
+# Ye
 This repository writes Kanye West quotes in the command-line interface (CLI).
 
 ---
@@ -11,7 +11,7 @@ make
 ### Usage
 Run either of the two following commands to use this application:
 ```
-./ye-quote
+./ye
 ```
 or
 ```

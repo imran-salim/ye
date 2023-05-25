@@ -1,4 +1,4 @@
-module ye-quote
+module ye
 
 go 1.20
 
