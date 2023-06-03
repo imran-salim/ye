@@ -10,13 +10,13 @@ type Response struct {
 	Quote string
 }
 
-func quoteKanyeWest(censor bool) string {
+func quoteKanyeWest(censored bool) string {
 	data := consumeAPI()
 	var respObj Response
 	json.Unmarshal(data, &respObj)
 	quote := respObj.Quote
 
-	if censor {
+	if censored {
 		return goaway.Censor(quote)
 	}
 
