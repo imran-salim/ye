@@ -22,3 +22,5 @@ go.work
 
 go.sum
 ye
+
+.DS_Store
