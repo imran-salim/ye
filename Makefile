@@ -2,7 +2,7 @@ all: get build
 
 get:
 	@echo "Installing packages and dependencies"
-	go get ye
+	go get github.com/imran-salim/ye
 
 build:
 	@echo "Building Ye"

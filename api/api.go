@@ -1,4 +1,4 @@
-package main
+package api
 
 import (
 	"fmt"
@@ -10,7 +10,7 @@ import (
 
 const uri = "https://api.kanye.rest"
 
-func consumeAPI() []byte {
+func ConsumeAPI() []byte {
 	resp, err := http.Get(uri)
 	if err != nil {
 		fmt.Print(err.Error())

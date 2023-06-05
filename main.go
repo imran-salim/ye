@@ -1,8 +1,12 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+
+	api "github.com/imran-salim/ye/api"
+)
 
 func main() {
 	censor := true
-	fmt.Println(quoteKanyeWest(censor))
+	fmt.Println(api.QuoteKanyeWest(censor))
 }

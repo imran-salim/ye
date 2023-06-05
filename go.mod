@@ -1,4 +1,4 @@
-module ye
+module github.com/imran-salim/ye
 
 go 1.20
 
