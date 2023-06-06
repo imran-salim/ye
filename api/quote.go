@@ -1,4 +1,4 @@
-package api
+package ye
 
 import (
 	"encoding/json"
@@ -11,7 +11,7 @@ type Response struct {
 }
 
 func QuoteKanyeWest(censored bool) string {
-	data := ConsumeAPI()
+	data := GetQuote()
 	var respObj Response
 	json.Unmarshal(data, &respObj)
 	quote := respObj.Quote
