@@ -2,7 +2,6 @@ package main
 
 import (
 	"encoding/json"
-	"reflect"
 	"strings"
 	"testing"
 
@@ -14,32 +13,13 @@ type Response struct {
 	Quote string
 }
 
-func testRespObjType(t *testing.T) {
-	data := ye.GetQuote()
-	var respObj Response
-	json.Unmarshal(data, &respObj)
-
-	if reflect.TypeOf(respObj.Quote) != reflect.TypeOf(respObj.Quote) {
-		t.Errorf("The data is not of the type %T", respObj.Quote)
-	}
-}
-
-func testRespObjQuote(t *testing.T) {
-	data := ye.GetQuote()
-	var respObj Response
-	json.Unmarshal(data, &respObj)
-
+func testRespObjEmpty(t *testing.T, respObj Response) {
 	if len(respObj.Quote) < 1 {
 		t.Errorf("The quote in the response is empty: %s", respObj.Quote)
 	}
 }
 
-func testCensor(t *testing.T) {
-	data := ye.GetQuote()
-	var respObj Response
-	json.Unmarshal(data, &respObj)
-	quote := respObj.Quote
-
+func testCensor(t *testing.T, quote string) {
 	if goaway.IsProfane(quote) {
 		censoredQuote := goaway.Censor(quote)
 
@@ -50,7 +30,11 @@ func testCensor(t *testing.T) {
 }
 
 func TestQuoteKanyeWest(t *testing.T) {
-	testRespObjType(t)
-	testRespObjQuote(t)
-	testCensor(t)
+	data := ye.GetQuote()
+	var respObj Response
+	json.Unmarshal(data, &respObj)
+	quote := respObj.Quote
+
+	testRespObjEmpty(t, respObj)
+	testCensor(t, quote)
 }
