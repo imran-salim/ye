@@ -8,10 +8,10 @@ import (
 	"os"
 )
 
-const uri = "https://api.kanye.rest"
+const URL = "https://api.kanye.rest"
 
 func GetQuote() []byte {
-	resp, err := http.Get(uri)
+	resp, err := http.Get(URL)
 	if err != nil {
 		fmt.Print(err.Error())
 		os.Exit(1)
