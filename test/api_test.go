@@ -7,7 +7,16 @@ import (
 	ye "github.com/imran-salim/ye/api"
 )
 
-func TestGetQuoteEmptyData(t *testing.T) {
+func testDataType(t *testing.T) {
+	var dataType []byte
+	data := ye.GetQuote()
+
+	if reflect.TypeOf(data) != reflect.TypeOf(dataType) {
+		t.Errorf("The data is not of the type %T", dataType)
+	}
+}
+
+func testEmptyData(t *testing.T) {
 	data := ye.GetQuote()
 
 	if len(data) < 1 {
@@ -15,11 +24,7 @@ func TestGetQuoteEmptyData(t *testing.T) {
 	}
 }
 
-func TestGetQuoteDataType(t *testing.T) {
-	var dataType []byte
-	data := ye.GetQuote()
-
-	if reflect.TypeOf(data) != reflect.TypeOf(dataType) {
-		t.Errorf("The data is not of the type %T", dataType)
-	}
+func TestGetQuote(t *testing.T) {
+	testDataType(t)
+	testEmptyData(t)
 }
