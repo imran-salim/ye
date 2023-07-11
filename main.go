@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	ye "github.com/imran-salim/ye/api"
+	ye "github.com/narmilas/ye/api"
 )
 
 func main() {

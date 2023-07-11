@@ -3,7 +3,7 @@ package main
 import (
 	"testing"
 
-	ye "github.com/imran-salim/ye/api"
+	ye "github.com/narmilas/ye/api"
 )
 
 func testDataEmpty(t *testing.T, data []byte) {

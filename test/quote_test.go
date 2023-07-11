@@ -6,7 +6,7 @@ import (
 	"testing"
 
 	goaway "github.com/TwiN/go-away"
-	ye "github.com/imran-salim/ye/api"
+	ye "github.com/narmilas/ye/api"
 )
 
 func testRespObjEmpty(t *testing.T, respObj ye.Response) {
