@@ -1,4 +1,4 @@
-package main
+package ye
 
 import (
 	"encoding/json"
@@ -9,13 +9,13 @@ import (
 	ye "github.com/narmilas/ye/api"
 )
 
-func testRespObjEmpty(t *testing.T, respObj ye.Response) {
+func testIsRespObjEmpty(t *testing.T, respObj ye.Response) {
 	if len(respObj.Quote) < 1 {
 		t.Errorf("The quote in the response is empty: %s", respObj.Quote)
 	}
 }
 
-func testCensor(t *testing.T, quote string) {
+func testIsQuoteCensored(t *testing.T, quote string) {
 	if goaway.IsProfane(quote) {
 		censoredQuote := goaway.Censor(quote)
 
@@ -31,6 +31,6 @@ func TestQuoteKanyeWest(t *testing.T) {
 	json.Unmarshal(data, &respObj)
 	quote := respObj.Quote
 
-	testRespObjEmpty(t, respObj)
-	testCensor(t, quote)
+	testIsRespObjEmpty(t, respObj)
+	testIsQuoteCensored(t, quote)
 }

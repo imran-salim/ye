@@ -1,4 +1,4 @@
-package main
+package ye
 
 import (
 	"testing"
@@ -6,7 +6,7 @@ import (
 	ye "github.com/narmilas/ye/api"
 )
 
-func testDataEmpty(t *testing.T, data []byte) {
+func testIsDataEmpty(t *testing.T, data []byte) {
 	if len(data) < 1 {
 		t.Errorf("The data has %d bytes", len(data))
 	}
@@ -15,5 +15,5 @@ func testDataEmpty(t *testing.T, data []byte) {
 func TestGetQuote(t *testing.T) {
 	data := ye.GetQuote()
 
-	testDataEmpty(t, data)
+	testIsDataEmpty(t, data)
 }
