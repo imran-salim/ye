@@ -16,7 +16,7 @@ func QuoteKanyeWest(censored bool) string {
 	json.Unmarshal(data, &respObj)
 	quote := respObj.Quote
 
-	if censored && goaway.IsProfane(quote) {
+	if goaway.IsProfane(quote) && censored {
 		return goaway.Censor(quote)
 	}
 
