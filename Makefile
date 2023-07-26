@@ -1,8 +1,17 @@
-all: get build
+github := github.com
+username := narmilas
+repo := ye
+package := $(github)/$(username)/$(repo)
+
+all: get clean build
 
 get:
-	@echo "Installing packages and dependencies"
-	go get github.com/narmilas/ye
+	@echo "Installing dependencies"
+	go get $(package)
+
+clean:
+	@echo "Removing binaries"
+	go clean
 
 build:
 	@echo "Building Ye"
