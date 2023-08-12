@@ -1,4 +1,4 @@
-module github.com/narmilas/ye
+module github.com/i8abyte/ye
 
 go 1.20
 

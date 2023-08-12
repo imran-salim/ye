@@ -1,19 +1,22 @@
 package main
 
 import (
+	"encoding/json"
 	"testing"
 
-	ye "github.com/narmilas/ye/api"
+	ye "github.com/i8abyte/ye/api"
 )
 
-func testIsDataEmpty(t *testing.T, data []byte) {
-	if len(data) < 1 {
-		t.Errorf("The data has %d bytes", len(data))
+func testIsRespBodyEmpty(t *testing.T, respBody ye.Response) {
+	if len(respBody.Quote) < 1 {
+		t.Errorf("The name/value pair in the body of the HTTP response does not contain a value")
 	}
 }
 
 func TestGetQuote(t *testing.T) {
 	data := ye.GetQuote()
+	var respBody ye.Response
+	json.Unmarshal(data, &respBody)
 
-	testIsDataEmpty(t, data)
+	testIsRespBodyEmpty(t, respBody)
 }
