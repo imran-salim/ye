@@ -23,7 +23,7 @@ func TestQuoteKanyeWest(t *testing.T) {
 	data := ye.GetQuote()
 	var respBody ye.Response
 	json.Unmarshal(data, &respBody)
-	quote := respBody.Quote
+	quote := "\"" + respBody.Quote + "\""
 
 	testIsQuoteCensored(t, quote)
 }

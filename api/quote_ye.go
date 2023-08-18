@@ -17,8 +17,8 @@ func QuoteKanyeWest(censored bool) string {
 	quote := respBody.Quote
 
 	if goaway.IsProfane(quote) && censored {
-		return goaway.Censor(quote)
+		return "\"" + goaway.Censor(quote) + "\""
 	}
 
-	return quote
+	return "\"" + quote + "\""
 }
