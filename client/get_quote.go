@@ -6,10 +6,10 @@ import (
 	"net/http"
 )
 
-const api = "https://api.kanye.rest"
+const uri = "https://api.kanye.rest"
 
 func GetQuote() []byte {
-	res, err := http.Get(api)
+	res, err := http.Get(uri)
 
 	if err != nil {
 		log.Fatal(err)
