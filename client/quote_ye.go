@@ -12,10 +12,8 @@ type Response struct {
 
 func QuoteKanyeWest(censored bool) string {
 	data := GetQuote()
-
 	var resBody Response
 	json.Unmarshal(data, &resBody)
-
 	quote := "\"" + resBody.Quote + "\""
 
 	if goaway.IsProfane(quote) && censored {
