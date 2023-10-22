@@ -19,6 +19,9 @@ func GetQuote() []byte {
 	if resp.StatusCode > 299 {
 		log.Fatalf("Response failed with status code: %d and\nbody: %s\n", resp.StatusCode, body)
 	}
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	return body
 }
