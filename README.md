@@ -1,6 +1,6 @@
 # Ye
 
-A RESTful API that allows a user to read random Kanye West quotes in the Unix shell by accessing the [🌊 kanye.rest](https://kanye.rest/) API.
+A REST API that allows a user to read random Kanye West quotes in the Unix shell by accessing the [🌊 kanye.rest](https://kanye.rest/) API.
 
 <img src="https://freepngimg.com/thumb/kanye_west/156143-kanye-rapper-west-free-download-png-hq.png" style="width:10em;height:auto;" />
 
