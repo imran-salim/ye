@@ -6,8 +6,14 @@ import (
 	"testing"
 
 	goaway "github.com/TwiN/go-away"
-	ye "github.com/i8abyte/ye/api"
+	ye "github.com/i8abyte/ye/client"
 )
+
+func testIsThereAQuote(t *testing.T, respBody ye.Response) {
+	if len(respBody.Quote) < 1 {
+		t.Errorf("The name/value pair in the body of the HTTP response does not contain a valid value")
+	}
+}
 
 func testIsQuoteCensored(t *testing.T, quote string) {
 	if goaway.IsProfane(quote) {
@@ -23,7 +29,7 @@ func TestQuoteKanyeWest(t *testing.T) {
 	data := ye.GetQuote()
 	var respBody ye.Response
 	json.Unmarshal(data, &respBody)
+	testIsThereAQuote(t, respBody)
 	quote := "\"" + respBody.Quote + "\""
-
 	testIsQuoteCensored(t, quote)
 }

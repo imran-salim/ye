@@ -1,22 +1,23 @@
 package main
 
 import (
-	"encoding/json"
+	"net/http"
+	"os"
 	"testing"
-
-	ye "github.com/i8abyte/ye/api"
 )
 
-func testIsRespBodyEmpty(t *testing.T, respBody ye.Response) {
-	if len(respBody.Quote) < 1 {
-		t.Errorf("The name/value pair in the body of the HTTP response does not contain a value")
+func testIsHttpRequestSuccessful(t *testing.T, uri string) {
+	resp, err := http.Get(uri)
+	if err != nil {
+		t.Errorf("There was no response from the server: %s", uri)
+		os.Exit(1)
+	}
+	if resp.StatusCode > 299 {
+		t.Errorf("Response failed with the status code: %d", resp.StatusCode)
 	}
 }
 
 func TestGetQuote(t *testing.T) {
-	data := ye.GetQuote()
-	var respBody ye.Response
-	json.Unmarshal(data, &respBody)
-
-	testIsRespBodyEmpty(t, respBody)
+	uri := "https://api.kanye.rest"
+	testIsHttpRequestSuccessful(t, uri)
 }
