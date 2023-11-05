@@ -15,7 +15,7 @@ func testIsThereAQuote(t *testing.T, respBody ye.Response) {
 	}
 }
 
-func testIsQuoteCensored(t *testing.T, quote string) {
+func testIsTheQuoteCensored(t *testing.T, quote string) {
 	if goaway.IsProfane(quote) {
 		censoredQuote := goaway.Censor(quote)
 
@@ -31,5 +31,5 @@ func TestQuoteKanyeWest(t *testing.T) {
 	json.Unmarshal(data, &respBody)
 	testIsThereAQuote(t, respBody)
 	quote := "\"" + respBody.Quote + "\""
-	testIsQuoteCensored(t, quote)
+	testIsTheQuoteCensored(t, quote)
 }
