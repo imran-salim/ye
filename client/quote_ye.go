@@ -10,7 +10,7 @@ type Response struct {
 	Quote string
 }
 
-func QuoteKanyeWest(censored bool) string {
+func QuoteYe(censored bool) string {
 	data := GetQuote()
 	var respBody Response
 	json.Unmarshal(data, &respBody)

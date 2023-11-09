@@ -8,5 +8,5 @@ import (
 
 func main() {
 	censor := true
-	fmt.Println(ye.QuoteKanyeWest(censor))
+	fmt.Println(ye.QuoteYe(censor))
 }

@@ -6,10 +6,10 @@ import (
 	"testing"
 )
 
-func testIsHttpRequestSuccessful(t *testing.T, uri string) {
-	resp, err := http.Get(uri)
+func testIsTheHttpRequestSuccessful(t *testing.T, url string) {
+	resp, err := http.Get(url)
 	if err != nil {
-		t.Errorf("There was no response from the server: %s", uri)
+		t.Errorf("There was no response from the server: %s", url)
 		os.Exit(1)
 	}
 	if resp.StatusCode > 299 {
@@ -18,6 +18,6 @@ func testIsHttpRequestSuccessful(t *testing.T, uri string) {
 }
 
 func TestGetQuote(t *testing.T) {
-	uri := "https://api.kanye.rest"
-	testIsHttpRequestSuccessful(t, uri)
+	url := "https://api.kanye.rest"
+	testIsTheHttpRequestSuccessful(t, url)
 }
