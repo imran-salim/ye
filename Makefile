@@ -3,16 +3,14 @@ username := i8abyte
 repo := ye
 package := $(github)/$(username)/$(repo)
 
-all: get clean build
+all: get build
 
 get:
-	@echo "Installing dependencies"
+	@echo "Installing..."
 	go get $(package)
-
-clean:
-	@echo "Removing binaries"
-	go clean
+	@echo "Done!"
 
 build:
 	@echo "Building Ye"
 	go build
+	@echo "Done!"
