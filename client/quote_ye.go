@@ -7,7 +7,7 @@ import (
 )
 
 type Response struct {
-	Quote string
+	Quote string `json:"quote"`
 }
 
 func QuoteYe(censored bool) string {
