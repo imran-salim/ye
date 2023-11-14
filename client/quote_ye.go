@@ -15,10 +15,19 @@ func QuoteYe(censored bool) string {
 	var respBody Response
 	json.Unmarshal(data, &respBody)
 	quote := "\"" + respBody.Quote + "\""
+	profanityDetector := CustomProfanityDetector()
 
-	if goaway.IsProfane(quote) && censored {
-		return goaway.Censor(quote)
+	if profanityDetector.IsProfane(quote) && censored {
+		return profanityDetector.Censor(quote)
 	}
 
 	return quote
+}
+
+func CustomProfanityDetector() *goaway.ProfanityDetector {
+	profanityDetector := goaway.NewProfanityDetector()
+	customFalsePositives := goaway.DefaultFalsePositives
+	customFalsePositives = append(customFalsePositives, "therapeutic")
+	profanityDetector.WithCustomDictionary(goaway.DefaultProfanities, customFalsePositives, goaway.DefaultFalseNegatives)
+	return profanityDetector
 }
