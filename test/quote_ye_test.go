@@ -11,7 +11,7 @@ import (
 
 func testIsThereAQuote(t *testing.T, respBody ye.Response) {
 	if len(respBody.Quote) < 1 {
-		t.Errorf("The name/value pair in the body of the HTTP response does not contain a valid value")
+		t.Fatalf("The name/value pair in the body of the HTTP response does not contain a valid value")
 	}
 }
 
@@ -20,7 +20,7 @@ func testIsTheQuoteCensored(t *testing.T, quote string) {
 		censoredQuote := goaway.Censor(quote)
 
 		if !strings.Contains(censoredQuote, "*") {
-			t.Errorf("The quote contains profanity but is not censored")
+			t.Fatalf("The quote contains profanity but is not censored")
 		}
 	}
 }
