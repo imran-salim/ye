@@ -5,7 +5,6 @@ import (
 	"strings"
 	"testing"
 
-	goaway "github.com/TwiN/go-away"
 	ye "github.com/i8abyte/ye/client"
 )
 
@@ -16,8 +15,10 @@ func testIsThereAQuote(t *testing.T, respBody ye.Response) {
 }
 
 func testIsTheQuoteCensored(t *testing.T, quote string) {
-	if goaway.IsProfane(quote) {
-		censoredQuote := goaway.Censor(quote)
+	profanityDetector := ye.CustomProfanityDetector()
+
+	if profanityDetector.IsProfane(quote) {
+		censoredQuote := profanityDetector.Censor(quote)
 
 		if !strings.Contains(censoredQuote, "*") {
 			t.Fatalf("The quote contains profanity but is not censored")
