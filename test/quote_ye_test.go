@@ -15,33 +15,11 @@ func testIsThereAQuote(t *testing.T, respBody ye.Response) {
 	}
 }
 
-func testProfanityDetecorDictionaryProfanities(t *testing.T, profanities []string) {
-	if profanities != nil {
-		for index, element := range profanities {
+func testProfanityDetectorDictionaryEntries(t *testing.T, entries []string, typeOfEntries string) {
+	if entries != nil {
+		for index, element := range entries {
 			if len(element) < 1 {
-				t.Logf("There is an invalid element in the list of profanities at index %d: \"%s\"", index, element)
-				t.Fail()
-			}
-		}
-	}
-}
-
-func testProfanityDetecorDictionaryFalsePositives(t *testing.T, falsePositives []string) {
-	if falsePositives != nil {
-		for index, element := range falsePositives {
-			if len(element) < 1 {
-				t.Logf("There is an invalid element in the list of false positives at index %d: \"%s\"", index, element)
-				t.Fail()
-			}
-		}
-	}
-}
-
-func testProfanityDetecorDictionaryFalseNegatives(t *testing.T, falseNegatives []string) {
-	if falseNegatives != nil {
-		for index, element := range falseNegatives {
-			if len(element) < 1 {
-				t.Logf("There is an invalid element in the list of false negatives at index %d: \"%s\"", index, element)
+				t.Logf("There is an invalid element in the list of %s at index %d: \"%s\"", typeOfEntries, index, element)
 				t.Fail()
 			}
 		}
@@ -55,7 +33,7 @@ func testIsTheQuoteCensored(t *testing.T, quote string) {
 		censoredQuote := profanityDetector.Censor(quote)
 
 		if !strings.Contains(censoredQuote, "*") {
-			t.Logf("The quote contains profanity but is not censored")
+			t.Logf("The quote contains profanity, but is not censored")
 			t.Fail()
 		}
 	}
@@ -68,8 +46,8 @@ func TestQuoteYe(t *testing.T) {
 	quote := "\"" + respBody.Quote + "\""
 
 	testIsThereAQuote(t, respBody)
-	testProfanityDetecorDictionaryProfanities(t, []string{})
-	testProfanityDetecorDictionaryFalsePositives(t, []string{"button"})
-	testProfanityDetecorDictionaryFalseNegatives(t, []string{"f#%k"})
+	testProfanityDetectorDictionaryEntries(t, []string{}, "profanities")
+	testProfanityDetectorDictionaryEntries(t, []string{"button"}, "false positives")
+	testProfanityDetectorDictionaryEntries(t, []string{"f#%k"}, "false negatives")
 	testIsTheQuoteCensored(t, quote)
 }
