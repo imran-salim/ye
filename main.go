@@ -7,6 +7,5 @@ import (
 )
 
 func main() {
-	censor := true
-	fmt.Println(ye.QuoteYe(censor))
+	fmt.Println(ye.QuoteYe())
 }

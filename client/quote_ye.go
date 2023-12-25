@@ -10,30 +10,33 @@ type Response struct {
 	Quote string `json:"quote"`
 }
 
-func QuoteYe(censored bool) string {
+func QuoteYe() string {
 	data := GetQuote()
 	var respBody Response
 	json.Unmarshal(data, &respBody)
 	quote := "\"" + respBody.Quote + "\""
-	profanityDetector := CustomProfanityDetector()
 
-	if profanityDetector.IsProfane(quote) && censored {
+	profanityDetector := ProfanityDetector([]string{}, []string{"button"}, []string{"f#%k"})
+	if profanityDetector.IsProfane(quote) {
 		return profanityDetector.Censor(quote)
 	}
 
 	return quote
 }
 
-func CustomProfanityDetector() *goaway.ProfanityDetector {
+func ProfanityDetector(customProfanities []string, customFalsePositives []string, customFalseNegatives []string) *goaway.ProfanityDetector {
 	profanityDetector := goaway.NewProfanityDetector().WithSanitizeLeetSpeak(false).WithSanitizeSpecialCharacters(false)
+	profanities, falsePositives, falseNegatives := goaway.DefaultProfanities, goaway.DefaultFalsePositives, goaway.DefaultFalseNegatives
 
-	customFalsePositives := goaway.DefaultFalsePositives
-	customFalsePositives = append(customFalsePositives, "button")
+	if customProfanities != nil {
+		profanities = append(profanities, customProfanities...)
+	}
+	if customFalsePositives != nil {
+		falsePositives = append(falsePositives, customFalsePositives...)
+	}
+	if customFalseNegatives != nil {
+		falseNegatives = append(falseNegatives, customFalseNegatives...)
+	}
 
-	customFalseNegatives := goaway.DefaultFalseNegatives
-	customFalseNegatives = append(customFalseNegatives, "f#%k")
-
-	profanityDetector.WithCustomDictionary(goaway.DefaultProfanities, customFalsePositives, customFalseNegatives)
-
-	return profanityDetector
+	return profanityDetector.WithCustomDictionary(profanities, falsePositives, falseNegatives)
 }
