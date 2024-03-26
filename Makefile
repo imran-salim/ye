@@ -6,11 +6,14 @@ package := $(github)/$(username)/$(repo)
 all: get build
 
 get:
-	@echo "Installing..."
+	@echo "Ready to work."
+	@echo "Install package."
 	go get $(package)
-	@echo "Done!"
+	@echo "Job's done."
 
 build:
-	@echo "Building Ye"
+	@echo "Ready to work."
+	@echo "Build Ye."
 	go build
-	@echo "Done!"
+	@echo "Job's done."
+
