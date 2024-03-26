@@ -5,7 +5,7 @@ import (
 	"strings"
 	"testing"
 
-	ye "github.com/i8abyte/ye/client"
+	ye "github.com/joachimsalim/ye/client"
 )
 
 func testIsThereAQuote(t *testing.T, respBody ye.Response) {

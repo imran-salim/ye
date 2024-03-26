@@ -1,4 +1,4 @@
-module github.com/i8abyte/ye
+module github.com/joachimsalim/ye
 
 go 1.20
 

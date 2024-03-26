@@ -1,5 +1,5 @@
 github := github.com
-username := i8abyte
+username := joachimsalim
 repo := ye
 package := $(github)/$(username)/$(repo)
 
