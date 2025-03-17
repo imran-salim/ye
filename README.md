@@ -25,3 +25,12 @@ Enter the following command to run all unit tests:
 go test -v ./test
 ```
 ![usage](/assets/testing.png)
+
+### Docker
+Enter the following commands to build and run a Docker image:
+```
+docker build -t ye .
+```
+```
+docker run --rm -it ye
+```
