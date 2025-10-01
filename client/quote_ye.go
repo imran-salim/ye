@@ -11,9 +11,17 @@ type Response struct {
 }
 
 func QuoteYe() string {
-	data := GetQuote()
+	data, err := GetQuote()
+	if err != nil {
+		return "Error fetching quote: " + err.Error()
+	}
+
 	var respBody Response
-	json.Unmarshal(data, &respBody)
+	err = json.Unmarshal(data, &respBody)
+	if err != nil {
+		return "Error parsing quote data"
+	}
+
 	quote := "\"" + respBody.Quote + "\""
 
 	profanityDetector := ProfanityDetector([]string{}, []string{"button"}, []string{"f#%k"})

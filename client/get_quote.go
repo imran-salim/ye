@@ -1,27 +1,27 @@
 package ye
 
 import (
+	"fmt"
 	"io"
-	"log"
 	"net/http"
 )
 
-const url = "https://api.kanye.rest"
+const baseUrl = "https://api.kanye.rest"
 
-func GetQuote() []byte {
-	resp, err := http.Get(url)
+func GetQuote() ([]byte, error) {
+	resp, err := http.Get(baseUrl)
 	if err != nil {
-		log.Fatal(err)
+		return nil, err
 	}
 	defer resp.Body.Close()
 
 	body, err := io.ReadAll(resp.Body)
 	if resp.StatusCode > 299 {
-		log.Fatalf("Response failed with status code: %d and\nbody: %s\n", resp.StatusCode, body)
+		return nil, fmt.Errorf("HTTP request failed: status %d", resp.StatusCode)
 	}
 	if err != nil {
-		log.Fatal(err)
+		return nil, err
 	}
 
-	return body
+	return body, nil
 }
