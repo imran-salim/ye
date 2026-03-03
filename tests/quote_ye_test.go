@@ -1,4 +1,4 @@
-package ye
+package ye_test
 
 import (
 	"net/http"
