@@ -21,7 +21,6 @@
 go.work
 
 # Compiled files, built with the Makefile
-go.sum
 ye
 
 # Mac OS X files

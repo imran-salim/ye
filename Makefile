@@ -16,7 +16,7 @@ get:
 test:
 	@echo "Ready to work."
 	@echo "Test Ye."
-	go test -v ./test
+	go test -v ./tests
 	@echo "Job's done."
 
 build:
