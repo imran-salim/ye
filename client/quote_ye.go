@@ -6,7 +6,7 @@ import (
 	goaway "github.com/TwiN/go-away"
 )
 
-type Response struct {
+type response struct {
 	Quote string `json:"quote"`
 }
 
@@ -16,7 +16,7 @@ func QuoteYe() string {
 		return "Error fetching quote: " + err.Error()
 	}
 
-	var respBody Response
+	var respBody response
 	err = json.Unmarshal(data, &respBody)
 	if err != nil {
 		return "Error parsing quote data"
