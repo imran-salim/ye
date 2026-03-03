@@ -8,9 +8,8 @@ Read random Kanye West quotes in the Unix shell by accessing the [🌊 kanye.res
 ### Installation
 Enter the following command to install this application:
 ```
-make
+go build
 ```
-![installation.png](/assets/installation.png)
 
 ### Usage
 Enter the following command to use this application after installation:
@@ -22,9 +21,8 @@ Enter the following command to use this application after installation:
 ### Testing
 Enter the following command to run all unit tests:
 ```
-go test -v ./test
+go test -v ./tests
 ```
-![usage](/assets/testing.png)
 
 ### Docker
 Enter the following commands to build and run a Docker image:
