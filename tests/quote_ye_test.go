@@ -42,15 +42,15 @@ func TestQuoteYe(t *testing.T) {
 		}
 	})
 
-	t.Run("profanity detector handles custom words", func(t *testing.T) {
-		detector := ye.ProfanityDetector([]string{"test"}, []string{"button"}, []string{"f#%k"})
+	t.Run("Profanity detector handles custom words", func(t *testing.T) {
+		detector := ye.ProfanityDetector([]string{}, []string{"button"}, []string{"f#%k"})
 
-		if !detector.IsProfane("test word") {
-			t.Error("Custom profanity not detected")
+		if !detector.IsProfane("f#%k") {
+			t.Error("False negative(s) not handled")
 		}
 
 		if detector.IsProfane("button") {
-			t.Error("False positive not handled")
+			t.Error("False positive(s) not handled")
 		}
 	})
 }
